@@ -1,1 +1,63 @@
-!PLS CAN THIS THING JUST WORK I HAVE A DEADLINE TMAO AND CONRAD IS IN A EEK AND THERES SCHOOL UGH
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./server.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <form action="/" method="post">
+
+    <input type="text" name="digi1"  placeholder="first number">
+    <input type="text" name="digi2"  placeholder="second number"> 
+
+    <button type="submit" name="submit">Submit</button>   
+    </form>
+</body>
+</html> -->
+<!-- server.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+        body {
+            font-family: "Orbitron", sans-serif;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <form id="calcForm">
+        <input type="text" name="digi1" placeholder="First number" required>
+        <input type="text" name="digi2" placeholder="Second number" required>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <div id="result"></div> <!-- This div will show the result -->
+
+    <script>
+        document.getElementById('calcForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+    
+            const formData = new FormData(this);
+            
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(formData) // Convert FormData to URL-encoded format
+            });
+    
+            const result = await response.text();
+            document.getElementById('result').innerHTML = result; // Display result in the div
+        });
+    </script>
+    
+</body>
+</html>
