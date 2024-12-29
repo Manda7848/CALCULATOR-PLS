@@ -103,7 +103,7 @@ import { dirname } from 'path';
 import bodyParser from 'body-parser';
 
 const app = express();
-const port = 9000;
+const port = 1200;
 
 // Parse URL-encoded bodies (form data)
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -114,7 +114,7 @@ const __dirname = dirname(__filename);
 
 // Serve the HTML form
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/server.html"); // Ensure server.html is in the same directory
+    res.sendFile(__dirname + "/calc.html"); // Ensure server.html is in the same directory
 });
 
 // Handle form data POST request
