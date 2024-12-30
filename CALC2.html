@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda's Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #myVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        header {
+            font-size: 2.5em; /* Increased header font size */
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .calculator {
+            padding: 20px;
+            border-radius: 15px;
+            border: 5px solid #6a0dad; /* Purple border around the calculator */
+            background: linear-gradient(145deg, #1a1a1a, #333333); /* Glossy black effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            z-index: 1;
+            width: 330px; /* Adjusted width */
+        }
+
+        .calculator input {
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 1.5em; /* Increased font size for input */
+            text-align: right;
+            font-family: 'Orbitron', sans-serif;
+            border: none;
+            background-color: #2c2c2c; /* Darker background for better contrast */
+            color: white; /* White text */
+            border-radius: 5px;
+        }
+
+        .calculator .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .calculator button {
+            width: 22%;
+            padding: 20px; /* Increased padding for larger buttons */
+            font-size: 1.2em; /* Increased font size for buttons */
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(145deg, #6a0dad, #4b0082); /* Purple gradient */
+            color: white;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .calculator button:hover {
+            background: linear-gradient(145deg, #7b1cbd, #5c009b); /* Hover effect */
+        }
+
+        .button-zero {
+            width: 48%; /* Wider for centered zero */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Layout for the buttons (Google style) */
+        .button-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
+            gap: 10px;
+        }
+
+        .button-row:last-child {
+            grid-template-columns: repeat(3, 1fr); /* 3 buttons in the last row */
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="myVideo">
+        <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Header -->
+    <header>Amanda's Calculator</header>
+
+    <!-- Calculator UI -->
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="button-row">
+            <button onclick="clearResult()">C</button>
+            <button onclick="appendOperator('/')">÷</button>
+            <button onclick="appendOperator('*')">×</button>
+            <button onclick="appendOperator('-')">-</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('+')">+</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="calculate()">=</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendNumber('.')">.</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('0')" class="button-zero">0</button>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = '';
+
+        // Append numbers to input
+        function appendNumber(number) {
+            currentInput += number;
+            updateResult();
+        }
+
+        // Append operators to input
+        function appendOperator(operator) {
+            currentInput += ' ' + operator + ' ';
+            updateResult();
+        }
+
+        // Clear the input
+        function clearResult() {
+            currentInput = '';
+            updateResult();
+        }
+
+        // Perform calculation and display result
+        function calculate() {
+            try {
+                currentInput = eval(currentInput.replace('×', '*').replace('÷', '/')).toString();
+                updateResult();
+            } catch (error) {
+                currentInput = 'Error';
+                updateResult();
+            }
+        }
+
+        // Update the result in the input field
+        function updateResult() {
+            document.getElementById('result').value = currentInput;
+        }
+
+        // Keyboard input functionality
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+
+            if (key >= '0' && key <= '9') {
+                appendNumber(key);
+            } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+                appendOperator(key);
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === '.') {
+                appendNumber('.');
+            } else if (key === 'Backspace') {
+                clearResult();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -25,6 +25,15 @@
     <title>Calculator</title>
 
     <style>
+        #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
         *{
             box-sizing: border-box;
         }
@@ -56,9 +65,10 @@
             background-color: white;
             border: 2px solid rgb(0, 0, 0);
             border-radius: 25px;
-            position: fixed;
+            /* position: fixed;
+            position: center; */
             text-align:center;
-            z-index: 5;
+            z-index: 1;
         }
         input{
             border: 2px solid rgb(0, 0, 0);
@@ -68,7 +78,7 @@
             font-size: 1.5rem;
         }
         h1{
-            z-index: 6;
+            z-index: 2;
         }
         
         #result{
@@ -76,22 +86,17 @@
             background-color: rgb(68, 0, 255);
             color: white;
         } 
-        #myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
+        
        </style>
 </head>
 
 <body>
-    <h1>Amanda's Calculator</h1>
+    <video autoplay muted loop id="myVideo">
+        <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
+      </video>
+   
     <div id="body">
-       
+        <h1>Amanda's Calculator</h1>
     <form id="calcForm">
         <input type="text" name="digi1" placeholder="First number" required>
         <input type="text" name="digi2" placeholder="Second number" required>
@@ -119,8 +124,6 @@
         });
     </script>
     </div>
-    <video autoplay muted loop id="myVideo">
-        <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
-      </video>
+  
 </body>
 </html>
