@@ -134,8 +134,13 @@ app.post('/', (req, res) => {
     const sub = num1 - num2;
 
     res.send(`
-       <style> @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
-  body {font-family: "Orbitron", sans-serif; font-weight: "900"; }  </style>
+       <style>
+       #result{
+       background-color:white;
+       color: black;
+       padding-bottom: 40px;
+       }
+       </style>
    The numbers you inputted are ${num1} and ${num2} <br> <br> The result of adding the numbers is ${add} <br> <br> The result of multiplying the numbers is ${product} <br> <br> The result of dividing the numbers is ${div} <br> <br> The result of subtracting the numbers is ${sub}
     `);
 });

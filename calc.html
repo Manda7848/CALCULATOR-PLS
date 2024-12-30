@@ -23,13 +23,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="stylesheet" href="./calc.css">
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+        body {
+            font-family: "Orbitron", sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-align:center;
+            padding-top: 50px;
+            background-image: url("https://motionbgs.com/media/2887/nebula.960x540.mp4");
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-color: rgb(68, 0, 255);
+            color: white;
+        }
+
+        #submit{
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 25px;
+            font-size: 2rem;
+        }
+        #calcForm{
+            padding-top: 20px;
+            font-family: "Orbitron", sans-serif;
+            font-size: 1.5rem;
+        }
+        #body{
+            background-color: white;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 25px;
+            position: fixed;
+            text-align:center;
+            z-index: 5;
+        }
+        input{
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 25px; 
+            margin: 5px;
+            padding: 5px;
+            font-size: 1.5rem;
+        }
+        h1{
+            z-index: 6;
+        }
+        
+        #result{
+            text-align:center;
+            background-color: rgb(68, 0, 255);
+            color: white;
+        } 
+        #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+       </style>
 </head>
+
 <body>
+    <h1>Amanda's Calculator</h1>
+    <div id="body">
+       
     <form id="calcForm">
         <input type="text" name="digi1" placeholder="First number" required>
         <input type="text" name="digi2" placeholder="Second number" required>
-        <button type="submit">Submit</button>
+        <button id="submit" type="submit">Submit</button>
     </form>
     <br>
     <div id="result"></div> <!-- This div will show the result -->
@@ -52,6 +118,9 @@
             document.getElementById('result').innerHTML = result; // Display result in the div
         });
     </script>
-    
+    </div>
+    <video autoplay muted loop id="myVideo">
+        <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
+      </video>
 </body>
 </html>
