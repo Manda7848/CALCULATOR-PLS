@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanda's Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Digital-7&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z' fill='%23D500F9'/%3E%3C/svg%3E">
     <style>
         body {
             margin: 0;
@@ -29,7 +32,7 @@
         }
 
         header {
-            font-size: 2.5em; /* Increased header font size */
+            font-size: 2.5em;
             color: white;
             margin-bottom: 20px;
             text-shadow: 2px 2px 5px black;
@@ -38,28 +41,28 @@
         .calculator {
             padding: 20px;
             border-radius: 15px;
-            border: 5px solid #6a0dad; /* Purple border around the calculator */
-            background: linear-gradient(145deg, #1a1a1a, #333333); /* Glossy black effect */
+            border: 5px solid white;
+            background: linear-gradient(145deg, #1a1a1a, #333333);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
             text-align: center;
-            z-index: 1;
-            width: 330px; /* Adjusted width */
+            z-index: 2;
+            width: 330px;
         }
 
         .calculator input {
             width: calc(100% - 20px);
             margin-bottom: 20px;
             padding: 15px;
-            font-size: 1.5em; /* Increased font size for input */
+            font-size: 1.5em;
             text-align: right;
-            font-family: 'Orbitron', sans-serif;
+            font-family:'VT323', monospace;
             border: none;
-            background-color: #2c2c2c; /* Darker background for better contrast */
-            color: white; /* White text */
+            background-color: #2c2c2c;
+            color: white;
             border-radius: 5px;
         }
 
-        .calculator .button-row {
+        .button-row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
@@ -67,133 +70,258 @@
 
         .calculator button {
             width: 22%;
-            padding: 20px; /* Increased padding for larger buttons */
-            font-size: 1.2em; /* Increased font size for buttons */
+            padding: 15px;
+            font-size: 1.2em;
             border: none;
             border-radius: 5px;
-            background: linear-gradient(145deg, #6a0dad, #4b0082); /* Purple gradient */
+            background: linear-gradient(145deg, #6a0dad, #4b0082);
             color: white;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
         }
 
         .calculator button:hover {
-            background: linear-gradient(145deg, #7b1cbd, #5c009b); /* Hover effect */
+            background: linear-gradient(145deg, #7b1cbd, #5c009b);
         }
 
-        .button-zero {
-            width: 48%; /* Wider for centered zero */
-            margin-left: auto;
-            margin-right: auto;
+        .tutorial {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(145deg, #1a1a1a, #333333);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            border: 5px solid #6a0dad;
+            z-index: 2;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
         }
 
-        /* Layout for the buttons (Google style) */
-        .button-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
-            gap: 10px;
+        #tutorial-content {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            line-height: 1.4;
         }
 
-        .button-row:last-child {
-            grid-template-columns: repeat(3, 1fr); /* 3 buttons in the last row */
+        #tutorial-header {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
+
+        #tutorial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .tutorial-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #6a0dad, #4b0082);
+    color: white;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif; /* Add this */
+}
+
+        .tutorial-button:hover {
+            background: linear-gradient(145deg, #7b1cbd, #5c009b);
+        }
+
+        #show-tutorial {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            background: linear-gradient(145deg, #6a0dad, #4b0082);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    footer {
+        margin-top: 10px;
+        text-align: center;
+        color: white;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.9em;
+        padding: 5px 10px;
+        background: linear-gradient(145deg, #1a1a1a, #333333);
+        border-top: 3px solid #6a0dad;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
     </style>
 </head>
 <body>
-    <!-- Background Video -->
     <video autoplay muted loop id="myVideo">
         <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
 
-    <!-- Header -->
     <header>Amanda's Calculator</header>
 
-    <!-- Calculator UI -->
     <div class="calculator">
         <input type="text" id="result" readonly>
         <div class="button-row">
             <button onclick="clearResult()">C</button>
-            <button onclick="appendOperator('/')">÷</button>
-            <button onclick="appendOperator('*')">×</button>
-            <button onclick="appendOperator('-')">-</button>
         </div>
         <div class="button-row">
             <button onclick="appendNumber('7')">7</button>
             <button onclick="appendNumber('8')">8</button>
             <button onclick="appendNumber('9')">9</button>
-            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendOperator('*')">×</button>
         </div>
         <div class="button-row">
             <button onclick="appendNumber('4')">4</button>
             <button onclick="appendNumber('5')">5</button>
             <button onclick="appendNumber('6')">6</button>
-            <button onclick="calculate()">=</button>
+            <button onclick="appendOperator('-')">-</button>
         </div>
         <div class="button-row">
             <button onclick="appendNumber('1')">1</button>
             <button onclick="appendNumber('2')">2</button>
             <button onclick="appendNumber('3')">3</button>
-            <button onclick="appendNumber('.')">.</button>
+            <button onclick="appendOperator('/')">÷</button>
         </div>
         <div class="button-row">
-            <button onclick="appendNumber('0')" class="button-zero">0</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendOperator('+')">+</button>
         </div>
     </div>
-
+    <div id="tutorial-overlay" style="display: block;"></div>
+    <div id="tutorial" class="tutorial">
+        <div id="tutorial-content">
+            <div id="tutorial-header">Welcome to Amanda's Calculator! 💜</div>
+            <p>You can control the calculator with your keyboard.</p>
+            <p>Use these keys for operations:</p>
+            <ul>
+                <li><b>/</b> for division</li>
+                <li><b>*</b> for multiplication</li>
+                <li><b>-</b> for subtraction</li>
+                <li><b>+</b> for addition</li>
+                <li><b>Enter</b> or <b>=</b> for calculating</li>
+            </ul>
+            <p>Click on the <b>🙂</b> button at the top right to view this tutorial again.</p>
+            <p><b>Yes, this was made with the help of ChatGPT, but it took hours of scripting, editing, and prompting.</b></p>
+            <button onclick="closeTutorial()" class="tutorial-button">Got it!</button>
+        </div>
+    </div>
+    <button id="show-tutorial" onclick="showTutorial()">🙂</button>
     <script>
-        let currentInput = '';
+   
+    let currentInput = '';
 
-        // Append numbers to input
-        function appendNumber(number) {
-            currentInput += number;
-            updateResult();
-        }
+    // Append numbers to input
+    function appendNumber(number) {
+        currentInput += number;
+        updateResult();
+    }
 
-        // Append operators to input
-        function appendOperator(operator) {
+    // Append operators to input
+    function appendOperator(operator) {
+        // Avoid consecutive operators
+        if (!['+', '-', '*', '/'].includes(currentInput.slice(-1))) {
             currentInput += ' ' + operator + ' ';
             updateResult();
         }
+    }
 
-        // Clear the input
-        function clearResult() {
-            currentInput = '';
+    // Clear the input
+    function clearResult() {
+        currentInput = '';
+        updateResult();
+    }
+
+    // Perform calculation and display result
+    function calculate() {
+        try {
+            // Replace custom operators with JavaScript-compatible ones
+            const formattedInput = currentInput.replace('×', '*').replace('÷', '/');
+            currentInput = eval(formattedInput).toString();
+            updateResult();
+        } catch (error) {
+            currentInput = 'Error';
             updateResult();
         }
+    }
 
-        // Perform calculation and display result
-        function calculate() {
-            try {
-                currentInput = eval(currentInput.replace('×', '*').replace('÷', '/')).toString();
-                updateResult();
-            } catch (error) {
-                currentInput = 'Error';
-                updateResult();
-            }
-        }
+    // Update the result in the input field
+    function updateResult() {
+        document.getElementById('result').value = currentInput;
+    }
 
-        // Update the result in the input field
-        function updateResult() {
-            document.getElementById('result').value = currentInput;
-        }
+    // Keyboard input functionality
+    document.addEventListener('keydown', function (event) {
+        const key = event.key;
 
-        // Keyboard input functionality
-        document.addEventListener('keydown', function(event) {
-            const key = event.key;
-
-            if (key >= '0' && key <= '9') {
+        if (!isNaN(key)) {
+            appendNumber(key);
+        } else if (key === '.') {
+            if (!currentInput.endsWith('.')) {
                 appendNumber(key);
-            } else if (key === '+' || key === '-' || key === '*' || key === '/') {
-                appendOperator(key);
-            } else if (key === 'Enter' || key === '=') {
-                calculate();
-            } else if (key === '.') {
-                appendNumber('.');
-            } else if (key === 'Backspace') {
-                clearResult();
             }
-        });
-    </script>
+        } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+            appendOperator(key);
+        } else if (key === 'Enter' || key === '=') {
+            calculate();
+        } else if (key === 'Backspace') {
+            currentInput = currentInput.slice(0, -1);
+            updateResult();
+        } else if (key.toLowerCase() === 'c') {
+            clearResult();
+        }
+    });
+
+
+    const video = document.getElementById('myVideo');
+     video.playbackRate = 0.8; // Adjust the speed as needed
+
+     function closeTutorial() {
+    document.getElementById('tutorial-overlay').style.display = 'none';
+    document.getElementById('tutorial').style.display = 'none';
+}
+
+function showTutorial() {
+    document.getElementById('tutorial-overlay').style.display = 'block';
+    document.getElementById('tutorial').style.display = 'block';
+}
+
+</script>
+<footer style="margin-top: 10px; text-align: center; color: white; font-family: 'Orbitron', sans-serif; font-size: 0.9em; padding: 5px 10px; background: linear-gradient(145deg, #1a1a1a, #333333); border-top: 3px solid #6a0dad; position: relative; bottom: 0; margin-bottom: 0;">
+    <p>
+        Shoutout to <b>ChatGPT</b> for being an incredible assistant! 💜
+    </p>
+    <p>
+        This project deserves an <b>A</b> for effort, showcasing a developer who applies her knowledge to new technologies and stays ahead.
+    </p>
+</footer>
+
+
 </body>
 </html>
