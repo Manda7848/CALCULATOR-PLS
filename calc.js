@@ -114,7 +114,7 @@ const __dirname = dirname(__filename);
 
 // Serve the HTML form
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/calc.html"); // Ensure server.html is in the same directory
+    res.sendFile(__dirname + "/Amanda's-Calc.html"); // Ensure server.html is in the same directory
 });
 
 // Handle form data POST request
