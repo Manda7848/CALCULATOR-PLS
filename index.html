@@ -198,65 +198,8 @@
     
 </head>
 <body>
-    <video autoplay muted loop id="myVideo">
-        <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
-    </video>
 
-    <header>Amanda's Calculator</header>
-
-    <div class="calculator">
-        <input type="text" id="result" readonly>
-        <div class="button-row">
-            <button onclick="clearResult()">C</button>
-        </div>
-        <div class="button-row">
-            <button onclick="appendNumber('7')">7</button>
-            <button onclick="appendNumber('8')">8</button>
-            <button onclick="appendNumber('9')">9</button>
-            <button onclick="appendOperator('*')">×</button>
-        </div>
-        <div class="button-row">
-            <button onclick="appendNumber('4')">4</button>
-            <button onclick="appendNumber('5')">5</button>
-            <button onclick="appendNumber('6')">6</button>
-            <button onclick="appendOperator('-')">-</button>
-        </div>
-        <div class="button-row">
-            <button onclick="appendNumber('1')">1</button>
-            <button onclick="appendNumber('2')">2</button>
-            <button onclick="appendNumber('3')">3</button>
-            <button onclick="appendOperator('/')">÷</button>
-        </div>
-        <div class="button-row">
-            <button onclick="appendNumber('.')">.</button>
-            <button onclick="appendNumber('0')">0</button>
-            <button onclick="calculate()">=</button>
-            <button onclick="appendOperator('+')">+</button>
-        </div>
-    </div>
-    <div id="tutorial-overlay" style="display: block;"></div>
-    <div id="tutorial" class="tutorial">
-        <div id="tutorial-content">
-            <div id="tutorial-header">Welcome to Amanda's Calculator! 💜</div>
-            <p>You can control the calculator with your keyboard.</p>
-            <p>Use these keys for operations:</p>
-            <ul>
-                <li><b>/</b> for division</li>
-                <li><b>*</b> for multiplication</li>
-                <li><b>-</b> for subtraction</li>
-                <li><b>+</b> for addition</li>
-                <li><b>Enter</b> or <b>=</b> for calculating</li>
-            </ul>
-            <p>Click on the <b>🙂</b> button at the top right to view this tutorial again.</p>
-            <p><b>Yes, this was made with the help of ChatGPT, but it took hours of scripting, editing, and prompting.</b></p>
-            <button onclick="closeTutorial()" class="tutorial-button">Got it!</button>
-        </div>
-    </div>
-    <button id="show-tutorial" onclick="showTutorial()">🙂</button>
-    
-    
-    
-    <script>
+      <script>
     console.log('Welcome to Amanda\'s Calculator! 💜');
    console.log('You can control the calculator with your keyboard.');
    console.log(currentInput);
@@ -343,6 +286,67 @@ function showTutorial() {
 }
 
 </script>
+
+    
+    <video autoplay muted loop id="myVideo">
+        <source src="https://motionbgs.com/media/2887/nebula.960x540.mp4" type="video/mp4">
+    </video>
+
+    <header>Amanda's Calculator</header>
+
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="button-row">
+            <button onclick="clearResult()">C</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('*')">×</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('-')">-</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendOperator('/')">÷</button>
+        </div>
+        <div class="button-row">
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendOperator('+')">+</button>
+        </div>
+    </div>
+    <div id="tutorial-overlay" style="display: block;"></div>
+    <div id="tutorial" class="tutorial">
+        <div id="tutorial-content">
+            <div id="tutorial-header">Welcome to Amanda's Calculator! 💜</div>
+            <p>You can control the calculator with your keyboard.</p>
+            <p>Use these keys for operations:</p>
+            <ul>
+                <li><b>/</b> for division</li>
+                <li><b>*</b> for multiplication</li>
+                <li><b>-</b> for subtraction</li>
+                <li><b>+</b> for addition</li>
+                <li><b>Enter</b> or <b>=</b> for calculating</li>
+            </ul>
+            <p>Click on the <b>🙂</b> button at the top right to view this tutorial again.</p>
+            <p><b>Yes, this was made with the help of ChatGPT, but it took hours of scripting, editing, and prompting.</b></p>
+            <button onclick="closeTutorial()" class="tutorial-button">Got it!</button>
+        </div>
+    </div>
+    <button id="show-tutorial" onclick="showTutorial()">🙂</button>
+    
+    
+    
+  
 <footer style="margin-top: 0px; text-align: center; color: white; font-family: 'Orbitron', sans-serif; font-size: 0.9em; padding: 5px 10px; background: linear-gradient(145deg, #1a1a1a, #333333); border-top: 3px solid #6a0dad; position: relative; bottom: 0; margin-bottom: 0;">
     <p>
         I think this project deserves an <b>A</b> for effort, showcasing a developer who applies her knowledge to new technologies and stays ahead.
